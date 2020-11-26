@@ -1,1 +1,137 @@
-[{"pk": "5f312e9dc4d02b1e1e03b41a", "model": "teams.Team", "fields": {"name": "Atlanta Hawks", "alias": "Hawks"}}, {"pk": "5f312ee2a7f265cac1d2ce3f", "model": "teams.Team", "fields": {"name": "Brooklyn Nets", "alias": "Nets"}}, {"pk": "5f312eeca7f265cac1d2ce40", "model": "teams.Team", "fields": {"name": "Boston Celtics", "alias": "Celtics"}}, {"pk": "5f312ef8a7f265cac1d2ce41", "model": "teams.Team", "fields": {"name": "Charlotte Hornets", "alias": "Hornets"}}, {"pk": "5f312f00a7f265cac1d2ce42", "model": "teams.Team", "fields": {"name": "Chicago Bulls", "alias": "Bulls"}}, {"pk": "5f312f06a7f265cac1d2ce43", "model": "teams.Team", "fields": {"name": "Cleveland Cavaliers", "alias": "Cavaliers"}}, {"pk": "5f312f0ea7f265cac1d2ce44", "model": "teams.Team", "fields": {"name": "Dallas Mavericks", "alias": "Mavericks"}}, {"pk": "5f312f17a7f265cac1d2ce45", "model": "teams.Team", "fields": {"name": "Denver Nuggets", "alias": "Nuggets"}}, {"pk": "5f312f1fa7f265cac1d2ce46", "model": "teams.Team", "fields": {"name": "Detroit Pistons", "alias": "Pistons"}}, {"pk": "5f312f26a7f265cac1d2ce47", "model": "teams.Team", "fields": {"name": "Golden State Warriors", "alias": "Warriors"}}, {"pk": "5f312f2ca7f265cac1d2ce48", "model": "teams.Team", "fields": {"name": "Houston Rockets", "alias": "Rockets"}}, {"pk": "5f391f664e2944ea3b220dd5", "model": "teams.Team", "fields": {"name": "Los Angeles Lakers", "alias": "Lakers"}}, {"pk": "5f4103ef3a1855717c7f4835", "model": "teams.Team", "fields": {"name": "Milwaukee Bucks", "alias": "Bucks"}}, {"pk": "5f4103f43a1855717c7f4836", "model": "teams.Team", "fields": {"name": "Los Angeles Clippers", "alias": "Clippers"}}]
+[
+  {
+    "pk": "1",
+    "model": "teams.Team",
+    "fields": { "name": "Atlanta Hawks", "alias": "Hawks" }
+  },
+  {
+    "pk": "2",
+    "model": "teams.Team",
+    "fields": { "name": "Brooklyn Nets", "alias": "Nets" }
+  },
+  {
+    "pk": "3",
+    "model": "teams.Team",
+    "fields": { "name": "Boston Celtics", "alias": "Celtics" }
+  },
+  {
+    "pk": "4",
+    "model": "teams.Team",
+    "fields": { "name": "Charlotte Hornets", "alias": "Hornets" }
+  },
+  {
+    "pk": "5",
+    "model": "teams.Team",
+    "fields": { "name": "Chicago Bulls", "alias": "Bulls" }
+  },
+  {
+    "pk": "6",
+    "model": "teams.Team",
+    "fields": { "name": "Cleveland Cavaliers", "alias": "Cavaliers" }
+  },
+  {
+    "pk": "7",
+    "model": "teams.Team",
+    "fields": { "name": "Dallas Mavericks", "alias": "Mavericks" }
+  },
+  {
+    "pk": "8",
+    "model": "teams.Team",
+    "fields": { "name": "Denver Nuggets", "alias": "Nuggets" }
+  },
+  {
+    "pk": "9",
+    "model": "teams.Team",
+    "fields": { "name": "Detroit Pistons", "alias": "Pistons" }
+  },
+  {
+    "pk": "10",
+    "model": "teams.Team",
+    "fields": { "name": "Golden State Warriors", "alias": "Warriors" }
+  },
+  {
+    "pk": "11",
+    "model": "teams.Team",
+    "fields": { "name": "Houston Rockets", "alias": "Rockets" }
+  },
+  {
+    "pk": "12",
+    "model": "teams.Team",
+    "fields": { "name": "Los Angeles Lakers", "alias": "Lakers" }
+  },
+  {
+    "pk": "13",
+    "model": "teams.Team",
+    "fields": { "name": "Milwaukee Bucks", "alias": "Bucks" }
+  },
+  {
+    "pk": "14",
+    "model": "teams.Team",
+    "fields": { "name": "Los Angeles Clippers", "alias": "Clippers" }
+  },{
+    "pk": "15",
+    "model": "teams.Team",
+    "fields": { "name": "Memphis Grizzlies", "alias": "Grizzlies" }
+  },
+  {
+    "pk": "16",
+    "model": "teams.Team",
+    "fields": { "name": "Miami Heat", "alias": "Heat" }
+  },{
+    "pk": "17",
+    "model": "teams.Team",
+    "fields": { "name": "Minnesota Timberwolves", "alias": "Timberwolves" }
+  },{
+    "pk": "18",
+    "model": "teams.Team",
+    "fields": { "name": "New Orleans Pelicans", "alias": "Pelicans" }
+  },{
+    "pk": "19",
+    "model": "teams.Team",
+    "fields": { "name": "New York Knicks", "alias": "Knicks" }
+  },{
+    "pk": "20",
+    "model": "teams.Team",
+    "fields": { "name": "Oklahoma City Thunder", "alias": "Thunder" }
+  },{
+    "pk": "21",
+    "model": "teams.Team",
+    "fields": { "name": "Orlando Magic", "alias": "Magic" }
+  },{
+    "pk": "22",
+    "model": "teams.Team",
+    "fields": { "name": "Philadelphia 76ers", "alias": "76ers" }
+  },{
+    "pk": "23",
+    "model": "teams.Team",
+    "fields": { "name": "Phoenix Suns", "alias": "Suns" }
+  },{
+    "pk": "24",
+    "model": "teams.Team",
+    "fields": { "name": "Portland Trail Blazers", "alias": "Blazers" }
+  },{
+    "pk": "25",
+    "model": "teams.Team",
+    "fields": { "name": "Sacramento Kings", "alias": "Kings" }
+  },{
+    "pk": "26",
+    "model": "teams.Team",
+    "fields": { "name": "San Antonio Spurs", "alias": "Spurs" }
+  },{
+    "pk": "27",
+    "model": "teams.Team",
+    "fields": { "name": "Toronto Raptors", "alias": "Raptors" }
+  },{
+    "pk": "28",
+    "model": "teams.Team",
+    "fields": { "name": "Utah Jazz", "alias": "Jazz" }
+  },{
+    "pk": "29",
+    "model": "teams.Team",
+    "fields": { "name": "Washington Wizards", "alias": "Wizards" }
+  },{
+    "pk": "30",
+    "model": "teams.Team",
+    "fields": { "name": "Indiana Pacers", "alias": "Pacers" }
+  }
+]

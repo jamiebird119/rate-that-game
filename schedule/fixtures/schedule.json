@@ -8190,26 +8190,6 @@
     }
   },
   {
-    "pk": "435764a4-2eca-4812-b7be-b20f79af2cb8",
-    "model": "schedule.Schedule",
-    "fields": {
-      "date": "2020-02-15",
-      "time": "02:00:00Z",
-      "home": "Team USA",
-      "away": "Team World"
-    }
-  },
-  {
-    "pk": "bd89cd88-d39b-4dfe-ad7a-c05bb0d4c093",
-    "model": "schedule.Schedule",
-    "fields": {
-      "date": "2020-02-17",
-      "time": "01:00:00Z",
-      "home": "Team Giannis East",
-      "away": "Team LeBron West"
-    }
-  },
-  {
     "pk": "00be6c63-028f-4171-8893-ae26fad05b54",
     "model": "schedule.Schedule",
     "fields": {
