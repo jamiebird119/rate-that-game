@@ -10,12 +10,7 @@
 
     {% endblock %} {% block extra_head %} {% endblock %} {% block css %}
     <!-- Bootswatch Bootstrap CSS-->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/superhero/bootstrap.min.css"
-      integrity="sha384-nNK9n28pDUDDgIiIqZ/MiyO3F4/9vsMtReZK39klb/MtkZI3/LtjSjlmyVPS3KdN"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/superhero/bootstrap.min.css" integrity="sha384-HnTY+mLT0stQlOwD3wcAzSVAZbrBp141qwfR4WfTqVQKSgmcgzk+oP0ieIyrxiFO" crossorigin="anonymous">
     <!-- Google Fonts CSS-->
     <link
       href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
@@ -24,10 +19,7 @@
     <link href="{% static 'css/base.css' %}" rel="stylesheet" />
     {% endblock %} {% block corejs %}
     <!-- FontAwesome JS-->
-    <script
-      src="https://kit.fontawesome.com/b3365ba79c.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/b3365ba79c.js" crossorigin="anonymous"></script>
     <!-- JQUERY JS-->
     <script
   src="https://code.jquery.com/jquery-3.5.1.js"
@@ -49,7 +41,10 @@
     <title>{% block head_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid px-0 ">
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light m-0 p-0">
+    <a class="navbar-brand ml-2" href="{% url 'index' %}"><img class="logo rounded-3" src="/media/RTGLOGO.png" alt="Logo"/></a>
+    </nav>
       
       {% if messages %}
     <div class="message-container">
