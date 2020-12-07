@@ -8,9 +8,9 @@ class Schedule(models.Model):
     date = models.DateField()
     time = models.TimeField()
     home = models.ForeignKey(
-        Team, to_field='name', related_name='home_matches', on_delete=models.PROTECT)
+        Team, to_field='name', related_name='home_matches', on_delete=models.CASCADE)
     away = models.ForeignKey(
-        Team, to_field='name', related_name='away_matches', on_delete=models.PROTECT)
+        Team, to_field='name', related_name='away_matches', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.id

@@ -67,7 +67,7 @@
   {
     "pk": "14",
     "model": "teams.Team",
-    "fields": { "name": "Los Angeles Clippers", "alias": "Clippers" }
+    "fields": { "name": "LA Clippers", "alias": "Clippers" }
   },{
     "pk": "15",
     "model": "teams.Team",

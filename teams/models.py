@@ -11,7 +11,7 @@ class Team(models.Model):
         max_digits=3, blank=True, decimal_places=2, null=True)
     away_rating = models.DecimalField(
         max_digits=3, blank=True, decimal_places=2, null=True)
-    image = models.ImageField()
+    image = models.ImageField(blank=True)
 
     def __str__(self):
         return self.name
