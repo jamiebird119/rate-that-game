@@ -8,9 +8,13 @@
 {% block content %}
     <div class="container">
         <div class="text-center">
-            <h3 class="my-5">Find the <strong><i>Top Rated</i></strong> Games</h3>
-            <a class="btn btn-success rounded-4 my-4 mr-4"> Today's Games</a>
-            <a class="btn btn-primary rounded-4"> Select Date</a>
+            <h3 class="my-5">Find <strong><i>Top Rated</i></strong> Games</h3>
+            <a class="btn btn-success rounded-4 my-4 mr-4" href="{% url 'schedule_search' date=today %}"> Today's Games</a>
+            <a class="btn btn-primary rounded-4" id="datepicker_button"> Select Date</a>
         </div>
     </div>
+{% endblock %}
+
+{% block postloadjs %}
+
 {% endblock %}

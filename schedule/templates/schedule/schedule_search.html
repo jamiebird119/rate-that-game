@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block content %}
+<div class="container">
+
+<h4 class="header my-4">Games on {{date}} </h4> 
+{% if message %}
+ <h5 class="text-danger">  {{ message }}</h5>
+{% endif %}
+    <table class="table table-hover">
+    {% if games %}
+        {% for game in games %}
+            <tr class="table-secondary text-center my-auto">
+                <td>{{game.home.name }}</td>
+                <td> vs </td>
+                <td> {{game.away.name}}</td>
+                <td> {{game.time}} GMT</td>
+                <td> <a class="btn btn-large btn-success">Rate That Game</a> </td>                
+            </tr>
+        {% endfor %}
+    {% endif %}
+    </table>
+</div>
+{% endblock %}
