@@ -4,6 +4,8 @@
 <div class="container">
 
 <h4 class="header my-4">Games on {{date}} </h4> 
+<a class="btn btn-primary rounded-4" id="datepicker_button"> Select Date </a>
+<input type="text" id="my-datepicker" class="dateselect ml-2" onchange="search_schedule()"/>
 {% if message %}
  <h5 class="text-danger">  {{ message }}</h5>
 {% endif %}
@@ -11,14 +13,33 @@
     {% if games %}
         {% for game in games %}
             <tr class="table-secondary text-center my-auto">
-                <td>{{game.home.name }}</td>
-                <td> vs </td>
                 <td> {{game.away.name}}</td>
+                <td> vs </td>
+                <td>{{game.home.name }}</td>
                 <td> {{game.time}} GMT</td>
                 <td> <a class="btn btn-large btn-success">Rate That Game</a> </td>                
             </tr>
         {% endfor %}
     {% endif %}
     </table>
+    
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+
+
+<script type="text/javascript">
+   $('#datepicker_button').click(function(){
+       $(document).ready(function(){
+           $("#my-datepicker").datepicker({'format':'yyyy-mm-dd'}).focus();
+       });
+   });
+
+   function search_schedule(){
+       date = $('#my-datepicker').val();
+       redirectUrl = `schedule/search/${date}`;
+       window.location.href = redirectUrl;
+   }
+</script>
 {% endblock %}

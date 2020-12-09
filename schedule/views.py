@@ -11,10 +11,16 @@ def schedule_search(request, date):
     search_date = datetime.strptime(date, "%Y-%m-%d")
     try:
         games = Schedule.objects.filter(date=search_date)
-        context = {
+        if not games:
+            context = {
             'date': datetime.strftime(search_date, '%A %d %B'),
-            'games': games,
+            'message': 'There are currently no games on the selected date. Please check another.',
         }
+        else:
+            context = {
+                'date': datetime.strftime(search_date, '%A %d %B'),
+                'games': games,
+            }
     except Exception as e:
         print(e)
         context = {

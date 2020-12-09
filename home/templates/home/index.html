@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}{% load static %}
 
 {% block page_header %}
 <div class="page-header">
@@ -8,13 +8,33 @@
 {% block content %}
     <div class="container">
         <div class="text-center">
-            <h3 class="my-5">Find <strong><i>Top Rated</i></strong> Games</h3>
-            <a class="btn btn-success rounded-4 my-4 mr-4" href="{% url 'schedule_search' date=today %}"> Today's Games</a>
-            <a class="btn btn-primary rounded-4" id="datepicker_button"> Select Date</a>
+            <h3 class="my-3">Find Games Worth Watching </h3>
+            <div>
+                <div class="buttons">
+                    <a class="btn btn-success rounded-4 my-4 mr-4" href="{% url 'schedule_search' date=today %}"> Today's Games</a>
+                    <a class="btn btn-primary rounded-4" id="datepicker_button"> Select Date </a>
+                    <input type="text" id="my-datepicker" class="dateselect ml-2" onchange="search_schedule()"/>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
 
 {% block postloadjs %}
 
+
+<script type="text/javascript">
+   $('#datepicker_button').click(function(){
+       $(document).ready(function(){
+           $("#my-datepicker").datepicker({'format':'yyyy-mm-dd', 'todayHighlight': "True"}).focus();
+       });
+   });
+
+   function search_schedule(){
+       date = $('#my-datepicker').val();
+       redirectUrl = `schedule/search/${date}`;
+       window.location.href = redirectUrl;
+   }
+</script>
 {% endblock %}
+
