@@ -27,6 +27,23 @@
     min-height: calc(100vh - 110px);
 }
 
+.loader_gif{
+    height: 100px;
+    width: auto;
+    border-radius: 50%;
+    position: fixed;
+    top: 35%;
+    left: 45%;
+}
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    opacity: 0.3;
+}
 
 .dateselect{
     position: relative;
@@ -122,6 +139,7 @@
 .datepicker-dropdown.datepicker-orient-top:before {
     border-top: 7px solid rgba(0,0,0,.1);
 }
+
 
 @media only screen and (min-width: 769px) {
   .list-nav{

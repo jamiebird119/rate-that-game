@@ -1,11 +1,18 @@
 {% extends 'base.html' %} {% load static %}
 
 {% block content %}
+<div class="loader-gif-container d-none">
+    <div class="overlay">
+    </div>
+    <img class="loader_gif" src="/media/basketball-loader.gif"/>
+</div>
+
 <div class="container">
 
 <h4 class="header my-4">Games on {{date}} </h4> 
-<a class="btn btn-primary rounded-4" id="datepicker_button"> Select Date </a>
+<a class="btn btn-primary rounded-4  mb-2" id="datepicker_button"> Select Date </a>
 <input type="text" id="my-datepicker" class="dateselect ml-2" onchange="search_schedule()"/>
+
 {% if message %}
  <h5 class="text-danger">  {{ message }}</h5>
 {% endif %}
@@ -13,11 +20,20 @@
     {% if games %}
         {% for game in games %}
             <tr class="table-secondary text-center my-auto">
-                <td> {{game.away.name}}</td>
+                <td> {{game.schedule.away.name}}</td>
                 <td> vs </td>
-                <td>{{game.home.name }}</td>
-                <td> {{game.time}} GMT</td>
-                <td> <a class="btn btn-large btn-success">Rate That Game</a> </td>                
+                <td>{{game.schedule.home.name }}</td>
+                <td> {{game.schedule.time}} GMT</td>
+                <td> <a class="btn btn-large btn-success" onclick="show_rating('{{game.schedule.id}}')">Rate That Game</a> </td>                
+            </tr>
+            <tr class="table-light d-none" id="{{game.schedule.id}}">
+                <td colspan="5">
+                    {% if game.game_data.rating %}
+                        {{rating}}
+                    {% else %}
+                    {{ game.game_data }}
+                    {% endif %}
+                </td> 
             </tr>
         {% endfor %}
     {% endif %}
@@ -37,9 +53,12 @@
    });
 
    function search_schedule(){
-       date = $('#my-datepicker').val();
-       redirectUrl = `schedule/search/${date}`;
-       window.location.href = redirectUrl;
+       dateNew = $('#my-datepicker').val();
+       redirectURL = window.location.href.replace("{{search_date}}", dateNew);
+       console.log(redirectURL);
+       window.location = redirectURL;
    }
 </script>
+
+<script src="{% static 'js/display_rating.js' %}" type="text/javascript"></script>
 {% endblock %}
