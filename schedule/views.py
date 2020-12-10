@@ -17,13 +17,14 @@ def schedule_search(request, date):
                 game_data = schedule.game_data_set.get()
             except Exception as e:
                 game_data = "Game Not Played. Please check back later"
+                print(e)
             games.append({"schedule": item, "game_data": game_data})
         if not schedule:
             context = {
-            'search_date': date,
-            'date': datetime.strftime(search_date, '%A %d %B'),
-            'message': 'There are currently no games on the selected date. Please check another.',
-        }
+                'search_date': date,
+                'date': datetime.strftime(search_date, '%A %d %B'),
+                'message': 'There are currently no games on the selected date. Please check another.',
+            }
         else:
             context = {
                 'search_date': date,
