@@ -1,0 +1,1 @@
+web: gunicorn rate-that-game.wsgi:application
