@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
 import os
 if os.path.exists('env.py'):
     import env
@@ -50,7 +51,7 @@ INSTALLED_APPS = [
     'schedule',
     'teams',
     'django_crontab',
-    'storage'
+    'storages'
 ]
 
 MIDDLEWARE = [
