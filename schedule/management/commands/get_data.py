@@ -13,7 +13,7 @@ class Command(BaseCommand):
     help = 'Find and save game data for yesterdays games'
 
     def handle(self, *args, **options):
-        yesterday = date.today()
+        yesterday = date.today() - timedelta(days=1)
         try:
             games = Schedule.objects.filter(date=yesterday)
             for game in games:
