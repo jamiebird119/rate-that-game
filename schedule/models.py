@@ -25,7 +25,7 @@ class GameData(models.Model):
     away_points = models.IntegerField()
     home_scoring = models.JSONField()
     away_scoring = models.JSONField()
-    OT = models.BooleanField()
+    OT = models.BooleanField(default=False)
     rating = models.DecimalField(decimal_places=1, max_digits=2, blank=True)
 
     def get_rating(self):
