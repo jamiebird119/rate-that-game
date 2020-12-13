@@ -29,7 +29,7 @@
             <tr class="table-light d-none" id="{{game.schedule.id}}">
                 <td colspan="5">
                     {% if game.game_data.rating %}
-                        {{rating}}
+                        {{game.game_data.rating}}
                     {% else %}
                     {{ game.game_data }}
                     {% endif %}
@@ -48,7 +48,7 @@
 <script type="text/javascript">
    $('#datepicker_button').click(function(){
        $(document).ready(function(){
-           $("#my-datepicker").datepicker({'format':'yyyy-mm-dd'}).focus();
+           $("#my-datepicker").datepicker({'format':'yyyy-mm-dd', 'todayHighlight': "True"}).focus();
        });
    });
 

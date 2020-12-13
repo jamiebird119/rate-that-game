@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Schedule
+from .models import Schedule, GameData
 from datetime import datetime
 
 
@@ -14,7 +14,7 @@ def schedule_search(request, date):
         games = []
         for item in schedule:
             try:
-                game_data = schedule.game_data_set.get()
+                game_data = GameData.objects.get(scheduled_id=item.id)
             except Exception as e:
                 game_data = "Game Not Played. Please check back later"
                 print(e)

@@ -9,8 +9,8 @@ class Team(models.Model):
     name = models.CharField(max_length=254, blank=False,
                             null=False, unique=True)
     alias = models.CharField(max_length=20, blank=False, null=False)
-    ratings_home = models.JSONField(default=dict)
-    ratings_away = models.JSONField(default=dict)
+    ratings_home = models.JSONField(default=dict, blank=True)
+    ratings_away = models.JSONField(default=dict, blank=True)
     home_rating = models.DecimalField(
         max_digits=3, blank=True, decimal_places=2, null=True)
     away_rating = models.DecimalField(

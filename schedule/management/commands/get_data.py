@@ -54,7 +54,7 @@ class Command(BaseCommand):
                                 old_data[game.id] = game_data.teams_string
                                 with open('success.json', 'w') as jfile:
                                     json.dump(old_data, jfile)
-                            except JSONDecodeError:
+                            except ValueError:
                                 y = {game.id: game_data.teams_string}
                                 with open('success.json', 'w') as jfile:
                                     json.dump(y, jfile)
