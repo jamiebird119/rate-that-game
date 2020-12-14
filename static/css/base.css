@@ -140,6 +140,10 @@
     border-top: 7px solid rgba(0,0,0,.1);
 }
 
+.rating-img{
+    height: auto;
+    width: 400px;
+}
 
 @media only screen and (min-width: 769px) {
   .list-nav{

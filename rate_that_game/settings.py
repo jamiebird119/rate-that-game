@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'schedule',
     'teams',
     'django_crontab',
-    'storages'
+    'storages',
+    'apscheduler'
 ]
 
 MIDDLEWARE = [

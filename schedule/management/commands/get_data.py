@@ -17,10 +17,10 @@ class Command(BaseCommand):
         try:
             games = Schedule.objects.filter(date=yesterday)
             for game in games:
-                time.sleep(1)
-                url = f"https://api.sportradar.us/nba/trial/v7/en/games/{game.id}/boxscore.json?api_key={settings.API_KEY}"
-                self.stdout.write(url)
                 if not game.game_data_saved:
+                    time.sleep(1)
+                    url = f"https://api.sportradar.us/nba/trial/v7/en/games/{game.id}/boxscore.json?api_key={settings.API_KEY}"
+                    self.stdout.write(url)
                     try:
                         response = requests.get(url)
                         game_data = response.json()
@@ -35,7 +35,6 @@ class Command(BaseCommand):
                         )
                         game_data.get_rating()
                         game_data.check_OT()
-                        time.sleep(1)
                         self.stdout.write('Game Data Saved correctly ')
                         home_team = Team.objects.get(name=game.home.name)
                         home_team.ratings_home[game.id] = game_data.rating

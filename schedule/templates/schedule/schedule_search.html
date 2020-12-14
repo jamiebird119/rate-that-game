@@ -29,7 +29,9 @@
             <tr class="table-light d-none" id="{{game.schedule.id}}">
                 <td colspan="5">
                     {% if game.game_data.rating %}
-                        {{game.game_data.rating}}
+                    <div class="text-center">
+                        <img class="mx-auto rating-img" src="{{MEDIA_URL}}{{ game.game_data.rating|floatformat:0 }}star.png"/>
+                    </div>
                     {% else %}
                     {{ game.game_data }}
                     {% endif %}
