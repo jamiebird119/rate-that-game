@@ -10,7 +10,9 @@
 <div class="container">
 
 <h4 class="header my-4">Games on {{date}} </h4> 
+<a class="btn btn-primary mb-2" href="{% url 'schedule_search' prev %}"><i class="fas fa-arrow-alt-circle-left"></i></a>
 <a class="btn btn-primary rounded-4  mb-2" id="datepicker_button"> Select Date </a>
+<a class="btn btn-primary mb-2" href="{% url 'schedule_search' next %}"><i class="fas fa-arrow-alt-circle-right"></i></a>
 <input type="text" id="my-datepicker" class="dateselect ml-2" onchange="search_schedule()"/>
 
 {% if message %}
@@ -20,14 +22,16 @@
     {% if games %}
         {% for game in games %}
             <tr class="table-secondary text-center my-auto">
-                <td> {{game.schedule.away.name}}</td>
+                <td> <p>{{game.schedule.away.name}}</p><img class="team-logo d-none d-md-inline-block" src="{{MEDIA_URL}}/logos/{{game.schedule.away.image}}"/></td>
                 <td> vs </td>
-                <td>{{game.schedule.home.name }}</td>
-                <td> {{game.schedule.time}} GMT</td>
+                <td><p>{{game.schedule.home.name}}</p><img class="team-logo d-none d-md-inline-block" src="{{MEDIA_URL}}/logos/{{game.schedule.home.image}}"/></td>
+                <td class="d-none d-md-table-cell"> {{game.schedule.time}} GMT</td>
                 <td> <a class="btn btn-large btn-success" onclick="show_rating('{{game.schedule.id}}')">Rate That Game</a> </td>                
             </tr>
             <tr class="table-light d-none" id="{{game.schedule.id}}">
-                <td colspan="5">
+                <td class="align-middle mr-auto">
+                    <div class="d-block"><h3 class="text-center">Rated</h3></div></td>
+                <td colspan="3">
                     {% if game.game_data.rating %}
                     <div class="text-center">
                         <img class="mx-auto rating-img" src="{{MEDIA_URL}}{{ game.game_data.rating|floatformat:0 }}star.png"/>
@@ -36,6 +40,7 @@
                     {{ game.game_data }}
                     {% endif %}
                 </td> 
+                <td class="d-none d-md-table-cell"></td>
             </tr>
         {% endfor %}
     {% endif %}

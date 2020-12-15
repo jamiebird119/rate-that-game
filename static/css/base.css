@@ -142,12 +142,23 @@
 
 .rating-img{
     height: auto;
-    width: 400px;
+    width: 200px;
 }
 
+
+.team-logo{
+    width:auto;
+    height: 90px;
+}
+
+.table{
+    table-layout: fixed;
+}
 @media only screen and (min-width: 769px) {
   .list-nav{
     margin-left: 5rem;
 }
-
+.rating-img{
+    width: 400px;
+}
 }

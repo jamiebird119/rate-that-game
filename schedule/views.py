@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Schedule, GameData
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 # Create your views here.
@@ -9,6 +9,10 @@ from datetime import datetime
 def schedule_search(request, date):
     template = 'schedule/schedule_search.html'
     search_date = datetime.strptime(date, "%Y-%m-%d")
+    prev = search_date - timedelta(days=1)
+    prev = datetime.strftime(prev, "%Y-%m-%d")
+    next = search_date + timedelta(days=1)
+    next = datetime.strftime(next, "%Y-%m-%d")
     try:
         schedule = Schedule.objects.filter(date=search_date)
         games = []
@@ -22,12 +26,16 @@ def schedule_search(request, date):
         if not schedule:
             context = {
                 'search_date': date,
+                'prev': prev,
+                'next': next,
                 'date': datetime.strftime(search_date, '%A %d %B'),
                 'message': 'There are currently no games on the selected date. Please check another.',
             }
         else:
             context = {
                 'search_date': date,
+                'prev': prev,
+                'next': next,
                 'date': datetime.strftime(search_date, '%A %d %B'),
                 'games': games,
             }
@@ -35,6 +43,8 @@ def schedule_search(request, date):
         print(e)
         context = {
             'search_date': date,
+            'prev': prev,
+            'next': next,
             'date': datetime.strftime(search_date, '%A %d %B'),
             'message': 'There are currently no games on the selected date. Please check another.',
         }
