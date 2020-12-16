@@ -4,48 +4,70 @@
 <div class="loader-gif-container d-none">
     <div class="overlay">
     </div>
-    <img class="loader_gif" src="{{MEDIA_URL}}basketball-loader.gif"/>
+    <img class="loader_gif" src="{{MEDIA_URL}}basketball-loader.gif" />
 </div>
 
 <div class="container">
 
-<h4 class="header my-4">Games on {{date}} </h4> 
-<a class="btn btn-primary mb-2" href="{% url 'schedule_search' prev %}"><i class="fas fa-arrow-alt-circle-left"></i></a>
-<a class="btn btn-primary rounded-4  mb-2" id="datepicker_button"> Select Date </a>
-<a class="btn btn-primary mb-2" href="{% url 'schedule_search' next %}"><i class="fas fa-arrow-alt-circle-right"></i></a>
-<input type="text" id="my-datepicker" class="dateselect ml-2" onchange="search_schedule()"/>
+    <h4 class="header my-4">Games on {{date}} </h4>
+    <a class="btn btn-primary mb-2" href="{% url 'schedule_search' prev %}"><i
+            class="fas fa-arrow-alt-circle-left"></i></a>
+    <a class="btn btn-primary rounded-4  mb-2" id="datepicker_button"> Select Date </a>
+    <a class="btn btn-primary mb-2" href="{% url 'schedule_search' next %}"><i
+            class="fas fa-arrow-alt-circle-right"></i></a>
+    <input type="text" id="my-datepicker" class="dateselect ml-2" onchange="search_schedule()" />
 
-{% if message %}
- <h5 class="text-danger">  {{ message }}</h5>
-{% endif %}
-    <table class="table table-hover">
-    {% if games %}
-        {% for game in games %}
-            <tr class="table-secondary text-center my-auto">
-                <td> <p>{{game.schedule.away.name}}</p><img class="team-logo d-none d-md-inline-block" src="{{MEDIA_URL}}/logos/{{game.schedule.away.image}}"/></td>
-                <td> vs </td>
-                <td><p>{{game.schedule.home.name}}</p><img class="team-logo d-none d-md-inline-block" src="{{MEDIA_URL}}/logos/{{game.schedule.home.image}}"/></td>
-                <td class="d-none d-md-table-cell"> {{game.schedule.time}} GMT</td>
-                <td> <a class="btn btn-large btn-success" onclick="show_rating('{{game.schedule.id}}')">Rate That Game</a> </td>                
-            </tr>
-            <tr class="table-light d-none" id="{{game.schedule.id}}">
-                <td class="align-middle mr-auto">
-                    <div class="d-block"><h3 class="text-center">Rated</h3></div></td>
-                <td colspan="3">
-                    {% if game.game_data.rating %}
-                    <div class="text-center">
-                        <img class="mx-auto rating-img" src="{{MEDIA_URL}}{{ game.game_data.rating|floatformat:0 }}star.png"/>
-                    </div>
-                    {% else %}
-                    {{ game.game_data }}
-                    {% endif %}
-                </td> 
-                <td class="d-none d-md-table-cell"></td>
-            </tr>
-        {% endfor %}
+    {% if message %}
+    <h5 class="text-danger"> {{ message }}</h5>
     {% endif %}
+    <table class="table table-hover">
+        {% if games %}
+        {% for game in games %}
+        <tr class="table-secondary text-center my-auto">
+            <td>
+                <p>{{game.schedule.away.name}}</p><img class="team-logo d-none d-md-inline-block"
+                    src="{{MEDIA_URL}}logos/{{game.schedule.away.image}}" />
+            </td>
+            <td> vs </td>
+            <td>
+                <p>{{game.schedule.home.name}}</p><img class="team-logo d-none d-md-inline-block"
+                    src="{{MEDIA_URL}}logos/{{game.schedule.home.image}}" />
+            </td>
+            <td class="d-none d-md-table-cell"> {{game.schedule.time}} GMT</td>
+            <td> <a class="btn btn-large btn-success" onclick="show_rating('{{game.schedule.id}}')">Rate That Game</a>
+            </td>
+        </tr>
+        <tr class="table-light d-none" id="{{game.schedule.id}}">
+
+            {% if game.game_data.rating %}
+            <td class="align-middle mr-auto">
+                <div class="d-block">
+                    <h3 class="text-center">Rated</h3>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="text-center">
+                    <img class="mx-auto rating-img"
+                        src="{{MEDIA_URL}}{{ game.game_data.rating|floatformat:0 }}star.png" />
+                </div>
+            </td>
+                {% else %}
+            <td class="align-middle mr-auto">
+                <div class="d-block">
+                    <h3 class="text-center"></h3>
+                </div>
+            </td>
+            <td colspan="3" class="text-center">
+                <h4 class="text-danger">{{ game.game_data }}</h4>
+            </td>
+                {% endif %}
+            
+            <td class="d-none d-md-table-cell"></td>
+        </tr>
+        {% endfor %}
+        {% endif %}
     </table>
-    
+
 </div>
 {% endblock %}
 
@@ -53,18 +75,18 @@
 
 
 <script type="text/javascript">
-   $('#datepicker_button').click(function(){
-       $(document).ready(function(){
-           $("#my-datepicker").datepicker({'format':'yyyy-mm-dd', 'todayHighlight': "True"}).focus();
-       });
-   });
+    $('#datepicker_button').click(function () {
+        $(document).ready(function () {
+            $("#my-datepicker").datepicker({ 'format': 'yyyy-mm-dd', 'todayHighlight': "True" }).focus();
+        });
+    });
 
-   function search_schedule(){
-       dateNew = $('#my-datepicker').val();
-       redirectURL = window.location.href.replace("{{search_date}}", dateNew);
-       console.log(redirectURL);
-       window.location = redirectURL;
-   }
+    function search_schedule() {
+        dateNew = $('#my-datepicker').val();
+        redirectURL = window.location.href.replace("{{search_date}}", dateNew);
+        console.log(redirectURL);
+        window.location = redirectURL;
+    }
 </script>
 
 <script src="{% static 'js/display_rating.js' %}" type="text/javascript"></script>
