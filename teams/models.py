@@ -33,17 +33,30 @@ class Team(models.Model):
         max_digits=3, blank=True, decimal_places=2, null=True)
     away_rating = models.DecimalField(
         max_digits=3, blank=True, decimal_places=2, null=True)
+    avg_rating = models.DecimalField(
+        max_digits=3, decimal_places=2, blank=True, null=True)
     image = models.ImageField(blank=True)
     conference = models.ForeignKey(
-        Conference, on_delete=models.SET_NULL, null=True)
+        Conference, on_delete=models.SET_NULL, null=True, blank=True)
     division = models.ForeignKey(
-        Division, on_delete=models.SET_NULL, null=True)
+        Division, on_delete=models.SET_NULL, null=True, blank=True)
     wins = models.IntegerField(default=0, blank=True)
     loses = models.IntegerField(default=0, blank=True)
     win_pct = models.DecimalField(
         decimal_places=2, max_digits=4, default=0, blank=True)
     div_rank = models.IntegerField(default=0)
     conf_rank = models.IntegerField(default=0)
+
+    def calc_average(self):
+        if self.home_rating is not None and self.away_rating is not None:
+            self.avg_rating = ((self.home_rating + self.away_rating)/2)
+        elif self.home_rating is None:
+            self.avg_rating = self.away_rating
+        elif self.away_rating is None:
+            self.avg_rating = self.home_rating
+        else:
+            self.avg_rating = 0
+        self.save()
 
     def calc_rating(self):
         if self.ratings_home:
@@ -53,9 +66,10 @@ class Team(models.Model):
             self.home_rating = sum/len(self.ratings_home)
         if self.ratings_away:
             sum = 0
-            for value in self.ratings_home.keys():
-                sum += self.ratings_home[value]
+            for value in self.ratings_away.keys():
+                sum += self.ratings_away[value]
             self.away_rating = sum/len(self.ratings_away)
+        self.calc_average()
         self.save()
 
     def __str__(self):

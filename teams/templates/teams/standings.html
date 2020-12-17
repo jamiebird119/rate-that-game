@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table my-24">
+{% for key, value in data.items %}
+<tr class="table-secondary"><th colspan="8"><h4>{{key}}</h4></th></tr>
+<tr class="table-primary">
+<th>
+        <h5> Rank </h5>
+</th>
+<th>
+        <h5> Team </h5>
+</th>
+<th>
+        <h5> Wins </h5>
+</th>
+<th>
+        <h5> Loses </h5>
+</th>
+<th>
+        <h5> Win % </h5>
+</th>
+<th>
+        <h5> Home Rating Avg. </h5>
+</th>
+<th>
+        <h5> Away Rating Avg. </h5>
+</th>
+<th>
+        <h5> Rating Avg. </h5>
+</th>
+</tr>
+{% for team in value %}
+<tr>
+    <td>{% if search == 'conf' %} {{team.conf_rank}} {% else %} {{team.div_rank}} {% endif %}</td>
+    <td>{{team.name}}</td>
+    <td>{{team.wins}}</td>
+    <td>{{team.loses}}</td>
+    <td>{{team.win_pct}}</td>
+    <td>{{team.home_rating}}</td>
+    <td>{{team.away_rating}}</td>
+    <td>{{team.avg_rating}}</td>
+</tr>
+{% endfor %}
+{% endfor %}
+</table>
+{% endblock %}

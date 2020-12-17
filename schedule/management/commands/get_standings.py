@@ -36,7 +36,8 @@ class Command(BaseCommand):
                     )
                     division.save()
                     print('Division Save')
-                    for team in div['teams']:
+                for team in div['teams']:
+                    try:
                         team_data = Team.objects.get(alias=team['name'])
                         team_data.conference = Conference.objects.get(
                             pk=conference.id)
@@ -47,4 +48,7 @@ class Command(BaseCommand):
                         team_data.div_rank = team['calc_rank']['div_rank']
                         team_data.conf_rank = team['calc_rank']['conf_rank']
                         team_data.save()
+                        team_data.calc_average()
                         print(f'Team updated {team_data.name}')
+                    except Exception as e:
+                        print(f'{e} - {team}')
