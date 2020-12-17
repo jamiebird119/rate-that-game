@@ -1,47 +1,86 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="row">
+    <div class="col-12">
+        <h4 class="mt-4">NBA 2020/2021 Regular Season Standing</h4>
+        <hr>
+    </div>
+    <div class="col-2 ml-3">
+        <label>
+            <p> Group By </p>
+            <div class="form-group">
+                <select class="custom-select">
+                    <option class="{% if search == 'conf' %}selected{% endif %}">Conference</option>
+                    <option class="{% if search == 'div' %}selected{% endif %}">Division</option>
+                </select>
+            </div>
+        </label>
+    </div>
+</div>
+
 <table class="table my-24">
-{% for key, value in data.items %}
-<tr class="table-secondary"><th colspan="8"><h4>{{key}}</h4></th></tr>
-<tr class="table-primary">
-<th>
-        <h5> Rank </h5>
-</th>
-<th>
-        <h5> Team </h5>
-</th>
-<th>
-        <h5> Wins </h5>
-</th>
-<th>
-        <h5> Loses </h5>
-</th>
-<th>
-        <h5> Win % </h5>
-</th>
-<th>
-        <h5> Home Rating Avg. </h5>
-</th>
-<th>
-        <h5> Away Rating Avg. </h5>
-</th>
-<th>
-        <h5> Rating Avg. </h5>
-</th>
-</tr>
-{% for team in value %}
-<tr>
-    <td>{% if search == 'conf' %} {{team.conf_rank}} {% else %} {{team.div_rank}} {% endif %}</td>
-    <td>{{team.name}}</td>
-    <td>{{team.wins}}</td>
-    <td>{{team.loses}}</td>
-    <td>{{team.win_pct}}</td>
-    <td>{{team.home_rating}}</td>
-    <td>{{team.away_rating}}</td>
-    <td>{{team.avg_rating}}</td>
-</tr>
-{% endfor %}
-{% endfor %}
+    {% for key, value in data.items %}
+    <tr class="table-secondary">
+        <th colspan="8">
+            <h4>{{key}}</h4>
+        </th>
+    </tr>
+    <tr class="table-primary">
+        <th class="align-middle">
+            <h5 class="text-center mb-0"> Rank </h5>
+        </th>
+        <th class="align-middle">
+            <h5 class="text-center mb-0"> Team </h5>
+        </th>
+        <th class="align-middle">
+            <h5 class="text-center mb-0"> Wins </h5>
+        </th>
+        <th class="align-middle">
+            <h5 class="text-center mb-0"> Loses </h5>
+        </th>
+        <th class="align-middle">
+            <h5 class="text-center mb-0"> Win % </h5>
+        </th>
+        <th class="align-middle">
+            <h5 class="text-center mb-0"> Home Rating Avg. </h5>
+        </th>
+        <th class="align-middle">
+            <h5 class="text-center mb-0"> Away Rating Avg. </h5>
+        </th>
+        <th class="align-middle">
+            <h5 class="text-center mb-0"> Rating Avg. </h5>
+        </th>
+    </tr>
+    {% for team in value %}
+    <tr class="standing-data">
+        <td class="text-center align-middle">
+            <p class="mb-0">{% if search == 'conf' %} {{team.conf_rank}} {% else %} {{team.div_rank}} {% endif %}</p>
+        </td>
+        <td class="text-center align-middle">
+            <p class="mb-0 d-none d-md-inline">{{team.name}}</p>
+            <p class="mb-0 d-inline d-md-none">{{team.alias}}</p>
+        </td>
+        <td class="text-center align-middle">
+            <p class="mb-0">{{team.wins}}</p>
+        </td>
+        <td class="text-center align-middle">
+            <p class="mb-0">{{team.loses}}</p>
+        </td>
+        <td class="text-center align-middle">
+            <p class="mb-0">{{team.win_pct}}</p>
+        </td>
+        <td class="text-center align-middle">
+            <p class="mb-0">{{team.home_rating}}</p>
+        </td>
+        <td class="text-center align-middle">
+            <p class="mb-0">{{team.away_rating}}</p>
+        </td>
+        <td class="text-center align-middle">
+            <p class="mb-0">{{team.avg_rating}}</p>
+        </td>
+    </tr>
+    {% endfor %}
+    {% endfor %}
 </table>
 {% endblock %}

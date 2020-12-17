@@ -151,12 +151,45 @@
     height: 90px;
 }
 
-.table{
+.table {
     table-layout: fixed;
+    font-size: 0.6rem;
+}
+
+.table td {
+    padding: 0;
+}
+
+hr{
+    border-color: white;
+}
+.table td a{
+    font-size: 0.6rem;
+}
+
+.table th h5{
+    font-size: 0.7rem;
+}
+.table th{
+    padding: 0;
 }
 @media only screen and (min-width: 769px) {
   .list-nav{
     margin-left: 5rem;
+}
+.table {
+    font-size: 0.875rem;
+}
+.table td a{
+    font-size: 0.875rem;
+}
+
+.table th h5{
+    font-size: 1.25rem;
+}
+
+.standing-data{
+    height: 2.6875rem;
 }
 .rating-img{
     width: 400px;
