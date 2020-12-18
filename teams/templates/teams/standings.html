@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}{% load static %}
 
 {% block content %}
 <div class="row">
@@ -10,9 +10,9 @@
         <label>
             <p> Group By </p>
             <div class="form-group">
-                <select class="custom-select">
-                    <option class="{% if search == 'conf' %}selected{% endif %}">Conference</option>
-                    <option class="{% if search == 'div' %}selected{% endif %}">Division</option>
+                <select class="custom-select" id="group_by">
+                    <option {% if search == 'conf' %}selected{% endif %} value="conf">Conference</option>
+                    <option {% if search == 'div' %}selected{% endif %} value="div">Division</option>
                 </select>
             </div>
         </label>
@@ -58,8 +58,11 @@
             <p class="mb-0">{% if search == 'conf' %} {{team.conf_rank}} {% else %} {{team.div_rank}} {% endif %}</p>
         </td>
         <td class="text-center align-middle">
-            <p class="mb-0 d-none d-md-inline">{{team.name}}</p>
-            <p class="mb-0 d-inline d-md-none">{{team.alias}}</p>
+            <a href="{% url 'team_info' team.alias %}">
+                <p class="mb-0 d-none d-md-inline">{{team.name}}</p>
+                <p class="mb-0 d-inline d-md-none">{{team.alias}}</p>
+            </a>
+
         </td>
         <td class="text-center align-middle">
             <p class="mb-0">{{team.wins}}</p>
@@ -83,4 +86,8 @@
     {% endfor %}
     {% endfor %}
 </table>
+{% endblock %}
+
+{% block postloadjs %}
+<script src="{% static 'js/standings_groupby.js' %}" type="text/javascript"></script>
 {% endblock %}

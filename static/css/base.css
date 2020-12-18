@@ -145,6 +145,10 @@
     width: 200px;
 }
 
+.logo-portrait{
+    width:150px;
+    height: auto;
+}
 
 .team-logo{
     width:auto;
