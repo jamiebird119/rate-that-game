@@ -146,7 +146,7 @@
 }
 
 .logo-portrait{
-    width:150px;
+    width:200px;
     height: auto;
 }
 
@@ -176,6 +176,10 @@ hr{
 }
 .table th{
     padding: 0;
+}
+
+.row{
+    border-radius: 2px;
 }
 
 .container{

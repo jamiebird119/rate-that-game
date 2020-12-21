@@ -2,33 +2,54 @@
 
 {% block content %}
 <div class="row mt-5 border border-light">
-    <div class="col-2">
-        <img class="logo-portrait" src="{{MEDIA_URL}}logos/{{team.image}}"/>
+    <div class="col-3">
+        <img class="logo-portrait ml-2" src="{{MEDIA_URL}}logos/{{team.image}}" />
     </div>
-    <div class="col-8">
-        <h4 class="align-middle"> {{ team.name }}</h4>
-        <p></p>
+    <div class="col-7">
+        <h4 class="align-middle mt-3"> {{ team.name }}</h4>
+        <p> {{team.conference.name}}<br>
+            Division - {{team.division.name }}
+        </p>
+        <div class="row mb-4">
+            <div class="col-6">
+                <p> W - {{ team.wins }} <br>
+                    L - {{ team.loses }} <br>
+                    W% - {{ team.win_pct|percentage }}%
+                </p>
+            </div>
+            <div class="col-6">
+                <p> Div Rank - {{ team.div_rank }} <br>
+                    Conference Rank - {{ team.conf_rank}} <br>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+        <p class="align-middle">Avg Rating</p>
+        <img class="logo-portrait float-middle" src="{{MEDIA_URL}}{{team.avg_rating|floatformat:0}}star.png" alt="{{avg_rating}}"/>
     </div>
 </div>
-<h4> Home </h4>
+<h3 class="text-center my-4"> Recent Rated Games</h3>
+<h4 class="my-3 text-center"> Home </h4>
 <hr>
 {% for item in games.home %}
-<h5>
+<h5 class="my-3 text-center">
     {% for key, value in item.items %}
-        {{ value.scheduled.date|format_date:"SHORT" }} vs
-        {{ value.scheduled.away.name }}
-        {{ value.rating }}
+    {{ value.scheduled.date|format_date:"SHORT" }} vs
+    {{ value.scheduled.away.name }}
+    {{ value.rating }}
     {% endfor %}
 </h5>
 {% endfor %}
-<h4> Away </h4>
+<hr>
+<h4 class="my-3 text-center"> Away </h4>
 <hr>
 {% for item in games.away %}
-<h5>
+<h5 class="my-3 text-center">
     {% for key, value in item.items %}
-        {{ value.scheduled.date|format_date:"SHORT" }} vs
-        {{ value.scheduled.home.name }}
-        {{ value.rating }}
+    {{ value.scheduled.date|format_date:"SHORT" }} vs
+    {{ value.scheduled.home.name }}
+    {{ value.rating }}
     {% endfor %}
 </h5>
 {% endfor %}
