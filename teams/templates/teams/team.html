@@ -1,9 +1,9 @@
-{% extends 'base.html' %}{% load static %}
+{% extends 'base.html' %}{% load static %} {% load formatdates %}
 
 {% block content %}
 <div class="row mt-5 border border-light">
     <div class="col-2">
-        <img class="logo-portrait" src="{{MEDIA_URL}}{{team.image}}"/>
+        <img class="logo-portrait" src="{{MEDIA_URL}}logos/{{team.image}}"/>
     </div>
     <div class="col-8">
         <h4 class="align-middle"> {{ team.name }}</h4>
@@ -11,21 +11,23 @@
     </div>
 </div>
 <h4> Home </h4>
+<hr>
 {% for item in games.home %}
 <h5>
     {% for key, value in item.items %}
-        {{ value.scheduled.date }}
-        {{ value.teams_string }}
+        {{ value.scheduled.date|format_date:"SHORT" }} vs
+        {{ value.scheduled.away.name }}
         {{ value.rating }}
     {% endfor %}
 </h5>
 {% endfor %}
 <h4> Away </h4>
+<hr>
 {% for item in games.away %}
 <h5>
     {% for key, value in item.items %}
-        {{ value.scheduled.date }}
-        {{ value.teams_string }}
+        {{ value.scheduled.date|format_date:"SHORT" }} vs
+        {{ value.scheduled.home.name }}
         {{ value.rating }}
     {% endfor %}
 </h5>
