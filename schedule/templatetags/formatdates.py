@@ -7,7 +7,10 @@ register = template.Library()
 
 @register.filter(name='format_date')
 def format_date(date, tag):
-    date = date
+    if type(date) == 'str':
+        date = date.strptime("%Y %m %d")
+    else:
+        date = date
     if tag == 'SHORT':
         date_new = date.strftime('%b %d')
     elif tag == 'HEADER':

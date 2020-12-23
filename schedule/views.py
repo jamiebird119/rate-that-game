@@ -8,7 +8,11 @@ from datetime import datetime, timedelta
 
 def schedule_search(request, date):
     template = 'schedule/schedule_search.html'
-    search_date = datetime.strptime(date, "%Y-%m-%d")
+    if date == 'today':
+        search_date = datetime.today()
+        print(search_date)
+    else:
+        search_date = datetime.strptime(date, "%Y-%m-%d")
     prev = search_date - timedelta(days=1)
     prev = datetime.strftime(prev, "%Y-%m-%d")
     next = search_date + timedelta(days=1)
@@ -40,7 +44,6 @@ def schedule_search(request, date):
                 'games': games,
             }
     except Exception as e:
-        print(e)
         context = {
             'search_date': date,
             'prev': prev,

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}{% load static %}
+{% extends 'base.html' %}{% load static %} {% load formatdates %}
 
 {% block page_header %}
 <div class="page-header">
@@ -15,6 +15,40 @@
                     <a class="btn btn-primary rounded-4" id="datepicker_button"> Select Date </a>
                     <input type="text" id="my-datepicker" class="dateselect ml-2" onchange="search_schedule()"/>
                 </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                {% if five_star %}
+                    <h4 class="my-4"> Five Star Rated!</h4>
+                    {% for game in five_star %}
+                    {{ game }}
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="col-12">
+                {% if top_rated %}
+                    <h4 class="my-4"> Top Rated</h4>
+                    <hr>
+                    
+                    <div class="row">
+                    {% for game in top_rated %}
+                        <div class="col-7">
+                            <p> {{ game.scheduled.away.name }}
+                                <img class="team-logo" src="{{ MEDIA_URL }}{{game.scheduled.away.image}}"/> at 
+                                 {{ game.scheduled.home.name }}
+                                <img class="team-logo" src="{{ MEDIA_URL }}{{game.scheduled.home.image}}"/></p>
+                        </div>
+                        <div class="col-1"></div>
+                        <div class="col-4">
+                            Rated - {{game.rating}}
+                        </div>
+                    {% endfor %}
+                        </div>
+                    
+                    
+                {% endif %}
             </div>
         </div>
     </div>
