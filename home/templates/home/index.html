@@ -36,9 +36,10 @@
                     {% for game in top_rated %}
                         <div class="col-7">
                             <p> {{ game.scheduled.away.name }}
-                                <img class="team-logo" src="{{ MEDIA_URL }}{{game.scheduled.away.image}}"/> at 
+                                <img class="team-logo" src="{{ MEDIA_URL }}logos/{{game.scheduled.away.image}}"/> at 
                                  {{ game.scheduled.home.name }}
-                                <img class="team-logo" src="{{ MEDIA_URL }}{{game.scheduled.home.image}}"/></p>
+                                <img class="team-logo" src="{{ MEDIA_URL }}logos/{{game.scheduled.home.image}}"/>
+                            on {{game.scheduled.date|format_date:"SHORT"}}</p>
                         </div>
                         <div class="col-1"></div>
                         <div class="col-4">

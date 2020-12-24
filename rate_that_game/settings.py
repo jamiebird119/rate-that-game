@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'teams',
     'django_crontab',
     'storages',
-    'apscheduler'
+    'apscheduler',
+    "colorfield"
 ]
 
 MIDDLEWARE = [

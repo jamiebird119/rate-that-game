@@ -1,7 +1,7 @@
 {% extends 'base.html' %}{% load static %} {% load formatdates %}
 
 {% block content %}
-<div class="row mt-5 border border-light">
+<div class="row mt-5 border border-light" style="background-color:{{team.team_color}};color:{{team.text_color}}" >
     <div class="col-3">
         <img class="logo-portrait ml-2" src="{{MEDIA_URL}}logos/{{team.image}}" />
     </div>

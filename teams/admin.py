@@ -7,6 +7,7 @@ class TeamAdmin(admin.ModelAdmin):
     list_display = (
         'name',
     )
+    ordering = ("name",)
 
 
 class ConferenceAdmin(admin.ModelAdmin):

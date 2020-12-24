@@ -31,6 +31,8 @@ class GameData(models.Model):
     def get_rating(self):
         self.rating = ((0.015 * (self.home_points + self.away_points)) - (0.01 * abs(
             self.home_points - self.away_points)) + (0.06 * self.lead_changes))
+        if self.rating > 5:
+            self.rating = 5
         self.save()
 
     def check_OT(self):

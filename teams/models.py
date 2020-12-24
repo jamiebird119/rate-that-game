@@ -1,4 +1,5 @@
 from django.db import models
+from colorfield.fields import ColorField
 
 
 # Create your models here.
@@ -28,6 +29,8 @@ class Team(models.Model):
                             null=False, unique=True)
     alias = models.CharField(max_length=20, blank=False, null=False)
     ratings_home = models.JSONField(default=dict, blank=True)
+    team_color = ColorField(default="#FF0000")
+    text_color = ColorField(default="#FFFFFF")
     ratings_away = models.JSONField(default=dict, blank=True)
     home_rating = models.DecimalField(
         max_digits=3, blank=True, decimal_places=2, null=True)
