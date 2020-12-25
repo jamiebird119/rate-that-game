@@ -13,6 +13,7 @@
 .menu-logo {
     top: 5px;
     position: fixed;
+    z-index: 50;
 }
 .page-header {
     height: 20px;
@@ -146,7 +147,7 @@
 }
 
 .logo-portrait{
-    width:200px;
+    width:175px;
     height: auto;
 }
 
@@ -208,5 +209,9 @@ hr{
 }
 .rating-img{
     width: 400px;
+}
+
+.logo-portrait{
+    width:200px;
 }
 }
