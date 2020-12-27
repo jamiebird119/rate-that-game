@@ -29,8 +29,8 @@ class GameData(models.Model):
     rating = models.DecimalField(decimal_places=1, max_digits=2, blank=True)
 
     def get_rating(self):
-        self.rating = ((0.015 * (self.home_points + self.away_points)) - (0.01 * abs(
-            self.home_points - self.away_points)) + (0.06 * self.lead_changes))
+        self.rating = round(((0.015 * (self.home_points + self.away_points)) - (0.01 * abs(
+            self.home_points - self.away_points)) + (0.06 * self.lead_changes))*2)/2
         if self.rating > 5:
             self.rating = 5
         self.save()
