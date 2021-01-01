@@ -6,70 +6,89 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="text-center">
-            <h3 class="my-3">Find Games Worth Watching </h3>
-            <div>
-                <div class="buttons">
-                    <a class="btn btn-success rounded-4 my-4 mr-4" href="{% url 'schedule_search' date=today %}"> Today's Games</a>
-                    <a class="btn btn-primary rounded-4" id="datepicker_button"> Select Date </a>
-                    <input type="text" id="my-datepicker" class="dateselect ml-2" onchange="search_schedule()"/>
-                </div>
+
+<div class="text-center">
+    <h3 class="my-3">Find Games Worth Watching </h3>
+</div>
+<div class="buttons text-center">
+    <a class="btn btn-success rounded-4 my-4 mr-4" href="{% url 'schedule_search' date=today %}"> Today's
+        Games</a>
+    <a class="btn btn-primary rounded-4" id="datepicker_button"> Select Date </a>
+    <input type="text" id="my-datepicker" class="dateselect ml-2" onchange="search_schedule()" />
+    <div id="date-container">
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        {% if five_star %}
+        <h4 class="my-4"> Five Star Rated!</h4>
+        <hr>
+        {% for game in five_star %}
+        <div class="row">
+            <div class="col-7">
+                <p> {{ game.scheduled.away.name }}
+                    <img class="team-logo d-none d-md-inline"
+                        src="{{ MEDIA_URL }}logos/{{game.scheduled.away.image}}" /> at
+                    {{ game.scheduled.home.name }}
+                    <img class="team-logo d-none d-md-inline"
+                        src="{{ MEDIA_URL }}logos/{{game.scheduled.home.image}}" />
+                    on {{game.scheduled.date|format_date:"SHORT"}}</p>
             </div>
+            <div class="d-none d-md-block col-md-1"></div>
+            <div class="col-5 col-md-4">
+                Rated - {{game.rating}}
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div class="col-12">
+        {% if top_rated %}
+        <h4 class="my-4"> Top Rated</h4>
+        <hr>
+
+        <div class="row no-gutters">
+            {% for game in top_rated %}
+            <div class="col-7">
+                <p> {{ game.scheduled.away.name }}
+                    <img class="team-logo d-none d-md-inline"
+                        src="{{ MEDIA_URL }}logos/{{game.scheduled.away.image}}" /> at
+                    {{ game.scheduled.home.name }}
+                    <img class="team-logo d-none d-md-inline"
+                        src="{{ MEDIA_URL }}logos/{{game.scheduled.home.image}}" />
+                    on {{game.scheduled.date|format_date:"SHORT"}}</p>
+            </div>
+            <div class="d-none d-md-block col-md-1"></div>
+            <div class="col-5 col-md-4">
+                Rated - {{game.rating}}
+            </div>
+            {% endfor %}
         </div>
 
-        <div class="row">
-            <div class="col-12">
-                {% if five_star %}
-                    <h4 class="my-4"> Five Star Rated!</h4>
-                    {% for game in five_star %}
-                    {{ game }}
-                    {% endfor %}
-                {% endif %}
-            </div>
-            <div class="col-12">
-                {% if top_rated %}
-                    <h4 class="my-4"> Top Rated</h4>
-                    <hr>
-                    
-                    <div class="row no-gutters">
-                    {% for game in top_rated %}
-                        <div class="col-7">
-                            <p> {{ game.scheduled.away.name }}
-                                <img class="team-logo d-none d-md-inline" src="{{ MEDIA_URL }}logos/{{game.scheduled.away.image}}"/> at 
-                                 {{ game.scheduled.home.name }}
-                                <img class="team-logo d-none d-md-inline" src="{{ MEDIA_URL }}logos/{{game.scheduled.home.image}}"/>
-                            on {{game.scheduled.date|format_date:"SHORT"}}</p>
-                        </div>
-                        <div class="d-none d-md-block col-md-1"></div>
-                        <div class="col-5 col-md-4">
-                            Rated - {{game.rating}}
-                        </div>
-                    {% endfor %}
-                        </div>
-                    
-                    
-                {% endif %}
-            </div>
-        </div>
+
+        {% endif %}
     </div>
+</div>
+
 {% endblock %}
 
 {% block postloadjs %}
 
 
 <script type="text/javascript">
-   $('#datepicker_button').click(function(){
-       $(document).ready(function(){
-           $("#my-datepicker").datepicker({'format':'yyyy-mm-dd', 'todayHighlight': "True"}).focus();
-       });
-   });
+    $('#datepicker_button').click(function () {
+        $(document).ready(function () {
+            $("#my-datepicker").datepicker({ 'format': 'yyyy-mm-dd', 'todayHighlight': "True", 'container': '#date-container' }).focus();
+            $(".datepicker").attr("style", "margin:0 auto;z-index:10;display:block;")
+        });
+    });
 
-   function search_schedule(){
-       date = $('#my-datepicker').val();
-       redirectUrl = `schedule/search/${date}`;
-       window.location = redirectUrl;
-   }
+    function search_schedule() {
+        date = $('#my-datepicker').val();
+        redirectUrl = `schedule/search/${date}`;
+        window.location = redirectUrl;
+    }
 </script>
 {% endblock %}
-

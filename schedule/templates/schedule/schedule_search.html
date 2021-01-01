@@ -46,12 +46,26 @@
             <td class="align-middle">
                 <h3 class="text-right">Rated</h3>
             </td>
+            {% if game.game_data.OT %}
+            <td colspan="2">
+                <div class="text-center">
+                    <img class="mx-auto rating-img"
+                        src="{{MEDIA_URL}}{{ game.game_data.rating|floatformat:0 }}star.png" />
+                </div>
+            </td>
+            <td class="align-middle">
+                <div class="text-center">
+                   <h3> OVERTIME BADGE</h3>
+                </div>
+            </td>
+            {% else %}
             <td colspan="3">
                 <div class="text-center">
                     <img class="mx-auto rating-img"
                         src="{{MEDIA_URL}}{{ game.game_data.rating|floatformat:0 }}star.png" />
                 </div>
             </td>
+            {% endif %}
             {% else %}
             <td class="align-middle mr-auto">
                 <div class="d-block">

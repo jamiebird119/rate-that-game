@@ -4,7 +4,9 @@
     border-radius: 50%;
     border: solid #2B3E50 5px;
 }
-
+.navbar-collapse{
+    z-index:49;
+}
 .list-nav{
     margin-top: 2rem;
     margin-left: 1rem;
