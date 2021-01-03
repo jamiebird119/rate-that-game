@@ -10,7 +10,7 @@ class Command(BaseCommand):
     help = 'Get current standings'
 
     def handle(self, *args, **options):
-        url = f'https://api.sportradar.us/nba/trial/v7/en/seasons/2020/PRE/standings.json?api_key={settings.API_KEY}'
+        url = f'https://api.sportradar.us/nba/trial/v7/en/seasons/2020/REG/standings.json?api_key={settings.API_KEY}'
         response = requests.get(url)
         standings = response.json()
         for data in standings['conferences']:

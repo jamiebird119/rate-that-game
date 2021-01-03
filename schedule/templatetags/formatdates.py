@@ -15,6 +15,8 @@ def format_date(date, tag):
         date_new = date.strftime('%b %d')
     elif tag == 'HEADER':
         date_new = date.strftime('%A %d %b')
+    elif tag == "SEARCH":
+        date_new = date.strftime("%Y/%d/%m")
     return date_new
 
 

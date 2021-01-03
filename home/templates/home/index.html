@@ -13,13 +13,26 @@
 <div class="buttons text-center">
     <a class="btn btn-success rounded-4 my-4 mr-4" href="{% url 'schedule_search' date=today %}"> Today's
         Games</a>
-    <a class="btn btn-primary rounded-4" id="datepicker_button"> Select Date </a>
-    <input type="text" id="my-datepicker" class="dateselect ml-2" onchange="search_schedule()" />
-    <div id="date-container">
-
+    <a class="btn btn-primary rounded-4" data-toggle="modal" data-target="#dateModal"> Select Date </a>
+</div>
+<div class="modal fade" id="dateModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center p-0">
+                <div class="row no-gutters">
+                    <div class="datepicker col-12" id="datepicker"></div>
+                </div>
+                <input type="hidden" id="my-datepicker" />
+            </div>
+        </div>
     </div>
 </div>
-
 <div class="row">
     <div class="col-12">
         {% if five_star %}
@@ -78,17 +91,17 @@
 
 
 <script type="text/javascript">
-    $('#datepicker_button').click(function () {
-        $(document).ready(function () {
-            $("#my-datepicker").datepicker({ 'format': 'yyyy-mm-dd', 'todayHighlight': "True", 'container': '#date-container' }).focus();
-            $(".datepicker").attr("style", "margin:0 auto;z-index:10;display:block;")
+    $(document).ready(function () {
+        $('#datepicker').datepicker({ 'format': 'yyyy-mm-dd', 'todayHighlight': "True" });
+        $('#datepicker').on('changeDate', function () {
+            $('#my-datepicker').val(
+                $('#datepicker').datepicker('getFormattedDate')
+            );
+            date = $('#datepicker').datepicker('getFormattedDate');
+            redirectUrl = `schedule/search/${date}`;
+            window.location = redirectUrl;
         });
     });
 
-    function search_schedule() {
-        date = $('#my-datepicker').val();
-        redirectUrl = `schedule/search/${date}`;
-        window.location = redirectUrl;
-    }
 </script>
 {% endblock %}

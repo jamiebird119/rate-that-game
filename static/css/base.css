@@ -65,9 +65,11 @@
 /*Bootstrap Calendar*/
 .datepicker {
     border-radius: 0;
+    margin: 0;
     padding: 0;
-    position: absolute;
-    top: 5px;
+    min-width: 60vw;
+    max-width: 80vw;
+    display: inline;
 }
 
 .datepicker-days table thead, .datepicker-days table tbody, .datepicker-days table tfoot {
@@ -135,12 +137,12 @@
   background-color: #3546b3;
   background-image: none;
 }
-.dropdown-menu {
-    border: 1px solid rgba(0,0,0,.1);
-    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+
+table ::marker{
+    content:"";
 }
-.datepicker-dropdown.datepicker-orient-top:before {
-    border-top: 7px solid rgba(0,0,0,.1);
+.modal-body{
+    height: 80vh;
 }
 
 .rating-img{
@@ -192,6 +194,9 @@ hr{
 }
 
 @media only screen and (min-width: 769px) {
+.datepicker{
+    margin-left:60px;
+}
   .list-nav{
     margin-left: 5rem;
 }
