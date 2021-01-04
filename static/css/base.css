@@ -150,6 +150,15 @@ table ::marker{
     width: 200px;
 }
 
+.team-rating{
+    width: 50px;
+    border-radius: 5px;
+    height: auto;
+}
+.rating-pin{
+    width: 50px;
+}
+
 .logo-portrait{
     width:175px;
     height: auto;
