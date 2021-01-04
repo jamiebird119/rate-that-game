@@ -1,4 +1,4 @@
-{% extends 'base.html' %}{% load static %}
+{% extends 'base.html' %}{% load static %}{% load rating_format %}
 
 {% block content %}
 <div class="row">
@@ -74,13 +74,13 @@
             <p class="mb-0">{{team.win_pct}}</p>
         </td>
         <td class="text-center align-middle">
-            <p class="mb-0">{{team.home_rating}}</p>
+            <p class="mb-0"> <img class="rating-pin" src="{{MEDIA_URL}}{{ team.home_rating|format_rating }}star.png"/></p>
         </td>
         <td class="text-center align-middle">
-            <p class="mb-0">{{team.away_rating}}</p>
+            <p class="mb-0"><img class="rating-pin" src="{{MEDIA_URL}}{{ team.away_rating|format_rating }}star.png"/></p>
         </td>
         <td class="text-center align-middle">
-            <p class="mb-0">{{team.avg_rating}}</p>
+            <p class="mb-0"><img class="rating-pin" src="{{MEDIA_URL}}{{ team.avg_rating|format_rating }}star.png"/></p>
         </td>
     </tr>
     {% endfor %}

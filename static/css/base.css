@@ -218,7 +218,16 @@ hr{
     width: 200px;
     border-radius: 4px;
 }
-
+.rating-pin{
+    width: 75px;
+    border-radius: 4px;
+    height: auto;
+}
+.team-rating{
+    width: 150px;
+    border-radius: 5px;
+    height: auto;
+}
 .logo-portrait{
     width:200px;
 }

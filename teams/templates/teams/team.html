@@ -1,4 +1,4 @@
-{% extends 'base.html' %}{% load static %} {% load formatdates %}
+{% extends 'base.html' %}{% load static %} {% load formatdates %}{% load rating_format %}
 
 {% block content %}
 <div class="loader-gif-container d-none">
@@ -10,7 +10,7 @@
 
 <div class="row mt-0 mt-md-5 border border-light" style="background-color:{{team.team_color}};color:{{team.text_color}}" >
     <div class="col-7 col-md-3">
-        <h4 class="align-middle mt-3 d-inline d-md-none"> {{ team.name }}</h4>
+        <h4 class="align-middle pt-4 d-inline d-md-none"> {{ team.name }}</h4>
         <img class="logo-portrait ml-0 ml-md-2" src="{{MEDIA_URL}}logos/{{team.image}}" />
     </div>
     <div class="col-5 col-md-7">
@@ -18,6 +18,7 @@
         <p> {{team.conference.name}}<br>
             Division - {{team.division.name }}
         </p>
+        <hr>
         <div class="row mb-4">
             <div class="col-12 col-md-6">
                 <p> W - {{ team.wins }} <br>
@@ -33,8 +34,8 @@
         </div>
     </div>
     <div class="col-12 col-md-2">
-        <p class="d-inline-block d-md-block">Avg Rating</p>
-        <img class="logo-portrait d-inline-block d-md-block" src="{{MEDIA_URL}}{{team.avg_rating|floatformat:1}}star.png" alt="{{avg_rating}}"/>
+        <p class="d-inline-block d-md-block mt-4">Avg Rating</p>
+        <img class="d-inline-block d-md-block bg-white team-rating" src="{{MEDIA_URL}}{{team.avg_rating|format_rating}}star.png" alt="{{avg_rating}}"/>
     </div>
 </div>
 <h3 class="text-center my-4"> Recent Rated Games</h3>
@@ -56,7 +57,7 @@
             <td colspan="2">
                 <div class="text-center">
                     <img class="mx-auto rating-img"
-                        src="{{MEDIA_URL}}{{ value.rating|floatformat:0 }}star.png" />
+                        src="{{MEDIA_URL}}{{ value.rating|format_rating }}star.png" />
                 </div>
             </td>
 
@@ -83,7 +84,7 @@
             <td colspan="2">
                 <div class="text-center">
                     <img class="mx-auto rating-img"
-                        src="{{MEDIA_URL}}{{ value.rating|floatformat:0 }}star.png" />
+                        src="{{MEDIA_URL}}{{ value.rating|format_rating }}star.png" />
                 </div>
             </td>
 

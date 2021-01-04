@@ -42,7 +42,7 @@ def team_info(request, alias):
     for key in team.ratings_away.keys():
         scheduled = Schedule.objects.get(id=key)
         game_data = scheduled.gamedata_set.get()
-        if scheduled.date >= today - timedelta(days=7):
+        if scheduled.date >= today - timedelta(days=14):
             away.append(
                 {id: game_data}
             )
