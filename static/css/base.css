@@ -215,7 +215,8 @@ hr{
     height: 2.6875rem;
 }
 .rating-img{
-    width: 400px;
+    width: 200px;
+    border-radius: 4px;
 }
 
 .logo-portrait{

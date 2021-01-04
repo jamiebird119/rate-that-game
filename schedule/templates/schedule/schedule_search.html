@@ -68,7 +68,7 @@
             <td colspan="2">
                 <div class="text-center">
                     <img class="mx-auto rating-img"
-                        src="{{MEDIA_URL}}{{ game.game_data.rating|floatformat:0 }}star.png" />
+                        src="{{MEDIA_URL}}{{ game.game_data.rating|floatformat:1 }}star.png" />
                 </div>
             </td>
             <td class="align-middle">
@@ -80,7 +80,7 @@
             <td colspan="3">
                 <div class="text-center">
                     <img class="mx-auto rating-img"
-                        src="{{MEDIA_URL}}{{ game.game_data.rating|floatformat:0 }}star.png" />
+                        src="{{MEDIA_URL}}{{ game.game_data.rating|floatformat:1 }}star.png" />
                 </div>
             </td>
             {% endif %}
