@@ -57,32 +57,7 @@
         {% endfor %}
         {% endif %}
     </div>
-    <div class="col-12">
-        {% if top_rated %}
-        <h4 class="my-4"> Top Rated</h4>
-        <hr>
-
-        <div class="row no-gutters">
-            {% for game in top_rated %}
-            <div class="col-7">
-                <p> {{ game.scheduled.away.name }}
-                    <img class="team-logo d-none d-md-inline"
-                        src="{{ MEDIA_URL }}logos/{{game.scheduled.away.image}}" /> at
-                    {{ game.scheduled.home.name }}
-                    <img class="team-logo d-none d-md-inline"
-                        src="{{ MEDIA_URL }}logos/{{game.scheduled.home.image}}" />
-                    on {{game.scheduled.date|format_date:"SHORT"}}</p>
-            </div>
-            <div class="d-none d-md-block col-md-1"></div>
-            <div class="col-5 col-md-4">
-                Rated - {{game.rating}}
-            </div>
-            {% endfor %}
-        </div>
-
-
-        {% endif %}
-    </div>
+    
 </div>
 
 {% endblock %}
