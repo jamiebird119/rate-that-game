@@ -159,6 +159,21 @@ table ::marker{
     width: 50px;
 }
 
+.hide-rating{
+    max-height: 0;
+    transition: max-height 1s ease;
+    overflow:hidden;
+}
+.show-rating{
+    transition: max-height 1s ease;
+    max-height:150px;
+    overflow:hidden;
+}
+
+.show-rating img{
+    transition: max-height 1s ease;
+}
+
 .logo-portrait{
     width:175px;
     height: auto;

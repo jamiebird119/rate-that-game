@@ -58,27 +58,29 @@
                     onclick="show_rating('{{game.schedule.id}}')">Rate That Game</a>
             </td>
         </tr>
-        <tr class="table-light d-none" id="{{game.schedule.id}}">
+        <tr class="table-light " id="{{game.schedule.id}}">
 
             {% if game.game_data.rating %}
             <td class="align-middle">
+                <div class="hide-rating rating">
                 <h3 class="text-right">Rated</h3>
+                </div>
             </td>
             {% if game.game_data.OT %}
             <td colspan="2">
-                <div class="text-center">
+                <div class="text-center hide-rating rating">
                     <img class="mx-auto rating-img"
                         src="{{MEDIA_URL}}{{ game.game_data.rating|floatformat:1 }}star.png" alt="{{ game.game_data.rating|floatformat:1 }}"/>
                 </div>
             </td>
             <td class="align-middle">
-                <div class="text-center">
+                <div class="text-center hide-rating rating">
                    <h3> OVERTIME BADGE</h3>
                 </div>
             </td>
             {% else %}
             <td colspan="3">
-                <div class="text-center">
+                <div class="text-center hide-rating rating">
                     <img class="mx-auto rating-img"
                         src="{{MEDIA_URL}}{{ game.game_data.rating|floatformat:1 }}star.png" alt="{{ game.game_data.rating|floatformat:1 }}" />
                 </div>
@@ -86,12 +88,14 @@
             {% endif %}
             {% else %}
             <td class="align-middle mr-auto">
-                <div class="d-block">
+                <div class="d-block hide-rating rating">
                     <h3 class="text-center"></h3>
                 </div>
             </td>
             <td colspan="3" class="text-center">
+                <div class="hide-rating rating">
                 <h4 class="text-danger">{{ game.game_data }}</h4>
+                </div>
             </td>
             {% endif %}
 
