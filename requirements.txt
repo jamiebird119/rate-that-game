@@ -4,7 +4,7 @@ boto3==1.16.34
 botocore==1.19.34
 crontab==0.22.9
 dj-database-url==0.5.0
-Django==3.1.4
+Django==3.1.6
 django-colorfield==0.3.2
 django-cronjobs==0.2.3
 django-crontab==0.7.1
